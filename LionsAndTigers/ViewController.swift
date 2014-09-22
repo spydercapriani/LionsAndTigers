@@ -66,10 +66,16 @@ class ViewController: UIViewController {
     }
     
     func displayTiger(){
-        myImageView.image = myTigers[index].image
-        lblName.text = myTigers[index].name
-        lblBreed.text = myTigers[index].breed
-        lblAge.text = "\(myTigers[index].age)"
+        let tiger = myTigers[index] //
+        // Animate transition between tigers after button pressed
+        UIView.transitionWithView(self.view, duration: 1, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
+                self.myImageView.image = tiger.image
+                self.lblName.text = tiger.name
+                self.lblBreed.text = tiger.breed
+                self.lblAge.text = "\(tiger.age)"
+            }, completion: { (finished: Bool) -> () in
+                
+            })
     }
 }
 
