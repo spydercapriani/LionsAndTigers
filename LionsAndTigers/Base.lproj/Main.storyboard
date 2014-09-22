@@ -53,7 +53,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="435" width="157" height="21"/>
+                                    <rect key="frame" x="16" y="435" width="108" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Breed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSa-a1-bYA">
@@ -62,7 +62,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="464" width="157" height="21"/>
+                                    <rect key="frame" x="16" y="464" width="108" height="21"/>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNg-L9-XhP">
@@ -71,7 +71,16 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="493" width="157" height="21"/>
+                                    <rect key="frame" x="16" y="493" width="108" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iv3-ww-3l9">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="132" y="435" width="172" height="79"/>
                                 </variation>
                             </label>
                         </subviews>
@@ -83,6 +92,7 @@
                                 <exclude reference="8MO-7K-Hm6"/>
                                 <exclude reference="SSa-a1-bYA"/>
                                 <exclude reference="bNg-L9-XhP"/>
+                                <exclude reference="Iv3-ww-3l9"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -92,6 +102,7 @@
                                 <include reference="8MO-7K-Hm6"/>
                                 <include reference="SSa-a1-bYA"/>
                                 <include reference="bNg-L9-XhP"/>
+                                <include reference="Iv3-ww-3l9"/>
                             </mask>
                         </variation>
                     </view>
@@ -100,6 +111,7 @@
                     <connections>
                         <outlet property="lblAge" destination="bNg-L9-XhP" id="5fG-fj-8c8"/>
                         <outlet property="lblBreed" destination="SSa-a1-bYA" id="6QZ-RG-EQX"/>
+                        <outlet property="lblFact" destination="Iv3-ww-3l9" id="jwN-C1-rZt"/>
                         <outlet property="lblName" destination="8MO-7K-Hm6" id="1Sq-y9-9rT"/>
                         <outlet property="myImageView" destination="W7W-GH-XTc" id="0JK-56-KHe"/>
                     </connections>

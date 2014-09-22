@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblName: UILabel!
     @IBOutlet weak var lblAge: UILabel!
     @IBOutlet weak var lblBreed: UILabel!
+    @IBOutlet weak var lblFact: UILabel!
     
     var myTigers:[Tiger] = []
     var index:Int = 0
@@ -21,7 +22,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
         let firstTiger = Tiger(name: "Tigger", age: 3, breed: "Bengal", image: UIImage(named:"BengalTiger.jpg"))
         let secondTiger = Tiger(name: "Tigress", age: 8, breed: "Indochinese", image: UIImage(named:"IndochineseTiger.jpg"))
         let thirdTiger = Tiger(name: "Jacob", age: 5, breed: "Malayan", image: UIImage(named:"MalayanTiger.jpg"))
@@ -55,24 +55,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func btnRandomPressed(sender: UIBarButtonItem) { // cycle randomly through tigers
-        var randomIndex = Int(arc4random_uniform(UInt32(myTigers.count)))
-        
-        while randomIndex == index { // ensures different tiger is chosen each time random button is pressed
+        var randomIndex:Int
+        do {
             randomIndex = Int(arc4random_uniform(UInt32(myTigers.count)))
-        }
+        } while randomIndex == index
         index = randomIndex
-        
         displayTiger()
     }
     
     func displayTiger(){
-        let tiger = myTigers[index] //
+        let tiger = myTigers[index]
         // Animate transition between tigers after button pressed
         UIView.transitionWithView(self.view, duration: 1, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
                 self.myImageView.image = tiger.image
                 self.lblName.text = tiger.name
                 self.lblBreed.text = tiger.breed
                 self.lblAge.text = "\(tiger.age)"
+                self.lblFact.text = tiger.randomFact()
             }, completion: { (finished: Bool) -> () in
                 
             })
