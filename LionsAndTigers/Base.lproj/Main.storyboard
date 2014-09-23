@@ -25,15 +25,9 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyh-QA-4xf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
-                                    <barButtonItem title="Previous" id="OJc-mu-0tc">
+                                    <barButtonItem enabled="NO" title="Previous" id="OJc-mu-0tc">
                                         <connections>
                                             <action selector="btnBarPrevPressed:" destination="vXZ-lx-hvc" id="9rZ-A8-Rka"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sy0-OD-oiV"/>
-                                    <barButtonItem title="Random" id="XmF-e0-0m1">
-                                        <connections>
-                                            <action selector="btnRandomPressed:" destination="vXZ-lx-hvc" id="LVC-3O-f3h"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="rcD-wz-Haf"/>
@@ -109,6 +103,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="btnPrevious" destination="OJc-mu-0tc" id="7pl-Xu-Itx"/>
                         <outlet property="lblAge" destination="bNg-L9-XhP" id="5fG-fj-8c8"/>
                         <outlet property="lblBreed" destination="SSa-a1-bYA" id="6QZ-RG-EQX"/>
                         <outlet property="lblFact" destination="Iv3-ww-3l9" id="jwN-C1-rZt"/>
