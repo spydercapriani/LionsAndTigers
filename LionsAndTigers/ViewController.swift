@@ -18,10 +18,12 @@ class ViewController: UIViewController {
     
     var myTigers:[Tiger] = []
     var myLions:[Lion] = []
-    var currentAnimal = (species: "Tiger", index: 0)
-    var prevAnimal = (species: "Tiger", index: 0)
-    var prevTiger = (species: "Tiger", index: 0)
-    var prevLion = (species: "Lion", index: 0)
+    var myCubs:[LionCub] = []
+    var currentAnimal = (species: "Tiger", index: 0) // store current animal information to be displayed
+    var prevAnimal = (species: "Tiger", index: 0) // store previous animal regardless of species
+    var prevTiger = (species: "Tiger", index: 0) // store last known tiger that was displayed
+    var prevLion = (species: "Lion", index: 0) // store last known lion that was displayed
+    var prevCub = (species: "Cub", index: 0) // store last known lion cub that was displayed
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,18 +36,31 @@ class ViewController: UIViewController {
         
         var lion = Lion()
         lion.age = 4
-        lion.isAlphaMale = false
+        lion.changeToAlphaMale()
         lion.image = UIImage(named: "Lion.jpg")
         lion.name = "Mufasa"
         lion.subSpecies = "West African"
         
         var lioness = Lion()
         lioness.age = 3
-        lioness.isAlphaMale = false
         lioness.image = UIImage(named: "Lioness.jpeg")
         lioness.name = "Sarabi"
         lioness.subSpecies = "Barbary"
         myLions += [lion,lioness]
+        
+        var maleCub = LionCub()
+        maleCub.age = 1
+        maleCub.name = "Simba"
+        maleCub.image = UIImage(named: "LionCub1.jpg")
+        maleCub.subSpecies = "Masai"
+        maleCub.isMale = true
+        
+        var femaleCub = LionCub()
+        femaleCub.age = 1
+        femaleCub.name = "Nala"
+        femaleCub.image = UIImage(named: "LionCub2.jpeg")
+        femaleCub.subSpecies = "Transvaal"
+        myCubs += [maleCub, femaleCub]
         
         updateView()
     }
@@ -77,14 +92,20 @@ class ViewController: UIViewController {
                     self.lblBreed.text = tiger.breed
                     self.lblAge.text = "\(tiger.age)"
                     self.lblFact.text = tiger.randomFact()
-                    self.lblFact.hidden = false
                 case "Lion":
                     let lion = self.myLions[self.currentAnimal.index]
                     self.myImageView.image = lion.image
                     self.lblName.text = lion.name
                     self.lblBreed.text = lion.subSpecies
                     self.lblAge.text = "\(lion.age)"
-                    self.lblFact.hidden = true
+                    self.lblFact.text = lion.randomFact()
+                case "LionCub":
+                    let cub = self.myCubs[self.currentAnimal.index]
+                    self.myImageView.image = cub.image
+                    self.lblName.text = cub.name
+                    self.lblBreed.text = cub.subSpecies
+                    self.lblAge.text = "\(cub.age)"
+                    self.lblFact.text = cub.randomFact()
             default:
                 println("updateView: Default Case is Running")
             }
@@ -105,6 +126,15 @@ class ViewController: UIViewController {
             prevTiger = currentAnimal // store previous tiger to avoid repetition
             currentAnimal = ("Lion", randomIndex)
         case ("Lion", _):
+            var randomIndex:Int
+            do {
+                randomIndex = Int(arc4random_uniform(UInt32(myCubs.count)))
+            } while randomIndex == prevCub.index // see that next lion is not repeat of last tiger
+            
+            prevAnimal = currentAnimal
+            prevCub = currentAnimal // store previous lion to avoid repetition
+            currentAnimal = ("LionCub", randomIndex)
+        case ("LionCub", _):
             var randomIndex:Int
             do {
                 randomIndex = Int(arc4random_uniform(UInt32(myTigers.count)))
